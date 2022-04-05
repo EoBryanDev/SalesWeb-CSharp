@@ -1,4 +1,4 @@
-namespace SalesWeb_CSharp.Models
+namespace SalesWeb_CSharp.Models.ViewModels
 {
     public class ErrorViewModel
     {
