@@ -15,6 +15,10 @@ namespace SalesWeb_CSharp.Data
         {
         }
 
-        public DbSet<SalesWeb_CSharp.Models.Department> Department { get; set; }
+        public DbSet<Department> Department { get; set; }
+
+        public DbSet<Seller> Seller { get; set; }
+
+        public DbSet<SalesRecord> SalesRecord { get; set; }
     }
 }
