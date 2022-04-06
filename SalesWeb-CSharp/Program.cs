@@ -3,9 +3,11 @@ using Microsoft.Extensions.DependencyInjection;
 using SalesWeb_CSharp.Data;
 var builder = WebApplication.CreateBuilder(args);
 
+var connectionString = builder.Configuration.GetConnectionString("SalesWeb_CSharpContext");
 builder.Services.AddDbContext<SalesWeb_CSharpContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("SalesWeb_CSharpContext")));
-
+{
+    options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
+});
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
