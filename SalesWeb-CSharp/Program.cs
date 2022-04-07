@@ -3,6 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using SalesWeb_CSharp.Data;
 using SalesWeb_CSharp.Services;
 
+
 var builder = WebApplication.CreateBuilder(args);
 
 var connectionString = builder.Configuration.GetConnectionString("SalesWeb_CSharpContext");
@@ -21,6 +22,14 @@ builder.Services.AddScoped<DepartmentService>();
 
 var app = builder.Build();
 
+var enUS = new CultureInfo("en-US");
+var localizationOption = new RequestLocalizationOptions
+{
+    DefaultRequestCulture = new RequestCulture(enUS),
+    SupportedCultures = new List<CultureInfo> { enUS },
+    SupportedUICultures = new List<CultureInfo> { enUS },
+};
+app.UseRequestLocalization(localizationOption);
 
 SeedData(app);
 
